@@ -1,0 +1,27 @@
+1$ git clone https://github.com/kaldi-asr/kaldi.git kaldi-trunk --origin golden
+
+2$ sudo apt-get install -qq g++ automake autoconf libtool subversion
+
+3$ sudo apt-get install sox
+
+4$ cd kaldi-trunk/tools; make;
+
+5$ extras/install_openblas.sh
+
+6$ cd ../src
+
+7$ ./configure --openblas-root=../tools/OpenBLAS/install
+
+8$ make
+
+9$ sudo apt-get install gawk
+
+10$ cd kaldi-trunk/tools
+
+11$ wget -O srilm.tgz https://raw.githubusercontent.com/denizyuret/nlpcourse/master/download/srilm-1.7.0.tgz
+
+12$ ./install_srilm.sh <name> <organize> <email>
+
+13$ python3 -m egs.vivos.train --kaldi_folder /home/khuehm/wrkspc/VN_speech/kaldi-trunk --corpus_folder /home/khuehm/wrkspc/VN_speech/automatic_speech_recognition/data/vivos/corpus
+
+14$ python3 egs/vivos/predict.py --wav /home/khuehm/wrkspc/VN_speech/temp_data/test_sample/test-02.wav --kaldi_folder /home/khuehm/wrkspc/VN_speech/kaldi-trunk --model_path /home/khuehm/wrkspc/VN_speech/kaldi-trunk/egs/uts_481/exp/mono --utils_path /home/khuehm/wrkspc/VN_speech/kaldi-trunk/egs/uts_481/utils
